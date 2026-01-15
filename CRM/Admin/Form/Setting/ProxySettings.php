@@ -25,6 +25,7 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting
     $this->addElement('static', 'proxy_version', ts('Proxy version'));
 
     $this->addElement('text', 'custom_mailing_base', ts('Custom Subscribe/Unsubscribe Pages'), array('disabled' => 'disabled'));
+    $this->addElement('text', 'proxy_api_key', ts('CiviProxy API Key'), array('disabled' => 'disabled'));
 
     $this->addButtons(array(
       array('type' => 'next', 'name' => ts('Save'), 'isDefault' => TRUE),
@@ -59,7 +60,8 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting
     $this->setDefaults(array(
         'proxy_url'     => $proxyUrl,
         'proxy_version' => $proxyVersion, // watch out, this might contain an error message
-        'custom_mailing_base' => CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'custom_mailing_base')
+        'custom_mailing_base' => CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'custom_mailing_base'),
+        'proxy_api_key' => CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'proxy_api_key'),
       ));
   }
 
@@ -81,6 +83,9 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting
         $values['custom_mailing_base'] = '';
       }
       CRM_Core_BAO_Setting::setItem($values['custom_mailing_base'],'CiviProxy Settings', 'custom_mailing_base');
+    }
+    if (isset($values['proxy_api_key'])) {
+      CRM_Core_BAO_Setting::setItem($values['proxy_api_key'], 'CiviProxy Settings', 'proxy_api_key');
     }
 
     // give feedback to user

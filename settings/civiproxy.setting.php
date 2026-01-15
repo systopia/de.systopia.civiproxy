@@ -62,4 +62,16 @@ return array(
     'description' => 'The URL can override the proxy for custom designed mailing subscribe/unsubscribe pages',
     'help_text' => '',
   ),
+  'proxy_api_key' => array(
+    'group_name' => 'CiviProxy Settings',
+    'group' => 'de.systopia',
+    'name' => 'proxy_api_key',
+    'type' => 'String',
+    'default' => "",
+    'add' => '4.3',
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'description' => 'The CiviProxy API key. This key is used to connect to the API of civi proxy. Leave empty to use the site key.',
+    'help_text' => '',
+  ),
  );
