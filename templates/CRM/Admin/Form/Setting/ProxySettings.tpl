@@ -1,3 +1,4 @@
+{crmScope extensionKey='de.systopia.civiproxy'}
 {*-------------------------------------------------------+
 | CiviProxy                                              |
 | Copyright (C) 2015-2021 SYSTOPIA                       |
@@ -25,7 +26,8 @@
               <td>{$form.proxy_version.html}</td>
             </tr>
             <tr>
-              <td class="label">{$form.proxy_api_key.label}&nbsp;<a onclick='CRM.help("{ts}Proxy API Key{/ts}", {literal}{"id":"id-proxy-api-key","file":"CRM\/Admin\/Form\/Setting\/ProxySettings"}{/literal}); return false;' href="#" title="{ts}Help{/ts}" class="helpicon">&nbsp;</a></td>
+              <td class="label">{$form.proxy_api_key.label}
+              {help id='id-proxy-api-key'  file='CRM/Admin/Form/Setting/ProxySettings'}
               <td>{$form.proxy_api_key.html}</td>
             </tr>
           </table>
@@ -95,3 +97,4 @@
   }
 </style>
 {/literal}
+{/crmScope}

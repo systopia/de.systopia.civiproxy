@@ -11,6 +11,8 @@
 require_once 'CRM/Admin/Form/Setting.php';
 require_once 'CRM/Core/BAO/CustomField.php';
 
+use Civi;
+
 /*
   CiviProxy Settings Form
 */
@@ -60,8 +62,8 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting
     $this->setDefaults(array(
         'proxy_url'     => $proxyUrl,
         'proxy_version' => $proxyVersion, // watch out, this might contain an error message
-        'custom_mailing_base' => CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'custom_mailing_base'),
-        'proxy_api_key' => CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'proxy_api_key'),
+        'custom_mailing_base' => Civi::settings()->get('custom_mailing_base'),
+        'proxy_api_key' => Civi::settings()->get('proxy_api_key'),
       ));
   }
 
@@ -85,7 +87,7 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting
       CRM_Core_BAO_Setting::setItem($values['custom_mailing_base'],'CiviProxy Settings', 'custom_mailing_base');
     }
     if (isset($values['proxy_api_key'])) {
-      CRM_Core_BAO_Setting::setItem($values['proxy_api_key'], 'CiviProxy Settings', 'proxy_api_key');
+      Civi::settings()->set('proxy_api_key', $values['proxy_api_key']);
     }
 
     // give feedback to user
