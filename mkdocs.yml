@@ -1,0 +1,27 @@
+site_name: CiviProxy
+site_description: This will enable CiviProxy support for mailings
+site_author: B. Endres
+repo_url: https://github.com/systopia/CiviProxy
+
+theme:
+  name: material
+
+nav:
+  - Introduction: index.md
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - def_list
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tilde
+  - pymdownx.betterem
+  - pymdownx.mark
+
+plugins:
+  - search:
+      lang: en

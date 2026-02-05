@@ -1,0 +1,235 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method CRM_Admin_Form_Setting_ProxySettings\:\:addRules\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Admin/Form/Setting/ProxySettings.php
+
+		-
+			message: '#^Method CRM_Admin_Form_Setting_ProxySettings\:\:buildQuickForm\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Admin/Form/Setting/ProxySettings.php
+
+		-
+			message: '#^Method CRM_Admin_Form_Setting_ProxySettings\:\:postProcess\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Admin/Form/Setting/ProxySettings.php
+
+		-
+			message: '#^Method CRM_Admin_Form_Setting_ProxySettings\:\:preProcess\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Admin/Form/Setting/ProxySettings.php
+
+		-
+			message: '#^Method CRM_Admin_Form_Setting_ProxySettings\:\:requestProxyVersion\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Admin/Form/Setting/ProxySettings.php
+
+		-
+			message: '#^Method CRM_Admin_Form_Setting_ProxySettings\:\:requestProxyVersion\(\) has parameter \$url with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Admin/Form/Setting/ProxySettings.php
+
+		-
+			message: '#^Method CRM_Admin_Form_Setting_ProxySettings\:\:validateURL\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Admin/Form/Setting/ProxySettings.php
+
+		-
+			message: '#^Method CRM_Admin_Form_Setting_ProxySettings\:\:validateURL\(\) has parameter \$value with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Admin/Form/Setting/ProxySettings.php
+
+		-
+			message: '#^PHPDoc tag @return has invalid value \(array\(int is_error, \[string message \|\| string version\]\)\)\: Unexpected token "\(", expected TOKEN_HORIZONTAL_WS at offset 208 on line 8$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: CRM/Admin/Form/Setting/ProxySettings.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/file\.php\?id\='' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/mailing/mail\.php'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/mosaico\.php\?id\='' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 2
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/mosaico\.php…'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/open\.php'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 2
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/url\.php'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 2
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Method CRM_Civiproxy_Mailer\:\:__construct\(\) has parameter \$driver with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Method CRM_Civiproxy_Mailer\:\:__construct\(\) has parameter \$mailer with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Method CRM_Civiproxy_Mailer\:\:__construct\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Method CRM_Civiproxy_Mailer\:\:mendURLs\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Method CRM_Civiproxy_Mailer\:\:mendURLs\(\) has parameter \$value with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Method CRM_Civiproxy_Mailer\:\:send\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Method CRM_Civiproxy_Mailer\:\:send\(\) has parameter \$body with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Method CRM_Civiproxy_Mailer\:\:send\(\) has parameter \$headers with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Method CRM_Civiproxy_Mailer\:\:send\(\) has parameter \$recipients with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function preg_replace expects array\<float\|int\|string\>\|string, array\<string\>\|string\|null given\.$#'
+			identifier: argument.type
+			count: 7
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Parameter \#3 \$subject of function preg_replace_callback expects array\<float\|int\|string\>\|string, array\<string\>\|string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Part \$proxy_base \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Part \$system_base \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 9
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Property CRM_Civiproxy_Mailer\:\:\$mailer has no type specified\.$#'
+			identifier: missingType.property
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Property CRM_Civiproxy_Mailer\:\:\$params type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: CRM/Civiproxy/Mailer.php
+
+		-
+			message: '#^Only booleans are allowed in a negated boolean, CRM_Civiproxy_Mosaico given\.$#'
+			identifier: booleanNot.exprNotBoolean
+			count: 1
+			path: CRM/Civiproxy/Mosaico.php
+
+		-
+			message: '#^Function civiproxy_civicrm_alterMailer\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: civiproxy.php
+
+		-
+			message: '#^Function civiproxy_civicrm_alterMailer\(\) has parameter \$driver with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: civiproxy.php
+
+		-
+			message: '#^Function civiproxy_civicrm_alterMailer\(\) has parameter \$mailer with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: civiproxy.php
+
+		-
+			message: '#^Function civiproxy_civicrm_alterMailer\(\) has parameter \$params with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: civiproxy.php
+
+		-
+			message: '#^Function civiproxy_civicrm_config\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: civiproxy.php
+
+		-
+			message: '#^Function civiproxy_civicrm_config\(\) has parameter \$config with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: civiproxy.php
+
+		-
+			message: '#^Function civiproxy_civicrm_enable\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: civiproxy.php
+
+		-
+			message: '#^Function civiproxy_civicrm_install\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: civiproxy.php
