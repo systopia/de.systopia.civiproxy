@@ -16,6 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+declare(strict_types = 1);
+
 class CRM_Civiproxy_Mosaico {
 
   /**
@@ -31,14 +33,15 @@ class CRM_Civiproxy_Mosaico {
   /**
    * @var bool
    */
-  private $isMosaicoInstalled = false;
+  private $isMosaicoInstalled = FALSE;
 
   private function __construct() {
     try {
-      $mosaicoExt = civicrm_api3('Extension', 'getsingle', ['full_name' => "uk.co.vedaconsulting.mosaico"]);
-      $this->isMosaicoInstalled = true;
+      $mosaicoExt = civicrm_api3('Extension', 'getsingle', ['full_name' => 'uk.co.vedaconsulting.mosaico']);
+      $this->isMosaicoInstalled = TRUE;
       $this->mosiacoExtenionUrl = CRM_Mosaico_ExtensionUtil::url();
-    } catch (\Exception $ex) {
+    }
+    catch (\Exception $ex) {
       // Do nothing
     }
   }
