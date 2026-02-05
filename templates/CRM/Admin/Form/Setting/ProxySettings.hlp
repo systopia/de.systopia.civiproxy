@@ -25,6 +25,12 @@
 </p>
 {/htxt}
 
+{htxt id='id-proxy-api-key'}
+<p>
+  {ts}This is the CiviProxy API Key. Used for connecting to the CiviProxy api. Leave empty to use the SITE KEY.{/ts}
+</p>
+{/htxt}
+
 {htxt id='id-custom-mailing-base'}
 <p>
   {ts}The path for the default unsubscribe page. You can use the default in CiviProxy or create your own and add the path here{/ts}
