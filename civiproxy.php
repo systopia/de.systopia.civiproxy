@@ -42,5 +42,5 @@ function civiproxy_civicrm_install() {
  * Implements hook_civicrm_enable().
  */
 function civiproxy_civicrm_enable() {
-  return _civiproxy_civix_civicrm_enable();
+  _civiproxy_civix_civicrm_enable();
 }

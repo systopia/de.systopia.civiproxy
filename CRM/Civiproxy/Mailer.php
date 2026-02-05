@@ -44,9 +44,9 @@ class CRM_Civiproxy_Mailer {
    */
   public function send($recipients, $headers, $body) {
     foreach ($headers as &$header) {
-      CRM_CiviProxy_Mailer::mendURLs($header);
+      CRM_Civiproxy_Mailer::mendURLs($header);
     }
-    CRM_CiviProxy_Mailer::mendURLs($body);
+    CRM_Civiproxy_Mailer::mendURLs($body);
     $this->mailer->send($recipients, $headers, $body);
   }
 
@@ -56,7 +56,8 @@ class CRM_Civiproxy_Mailer {
    */
   public static function mendURLs(&$value) {
     // check if the proxy is enabled
-    $enabled = CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'proxy_enabled');
+    /** @var bool $enabled */
+    $enabled = Civi::settings()->get('proxy_enabled') ?? FALSE;
     if (!$enabled) {
       return;
     }
@@ -116,10 +117,11 @@ class CRM_Civiproxy_Mailer {
 
     // Mailing related functions
     $value = preg_replace("#{$system_base}civicrm/mailing/view#i", $proxy_base . '/mailing/mail.php', $value);
-    $custom_mailing_base = CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'custom_mailing_base');
+    /** @var string $custom_mailing_base */
+    $custom_mailing_base = Civi::settings()->get('custom_mailing_base') ?? '';
     $other_mailing_functions = ['subscribe', 'confirm', 'unsubscribe', 'resubscribe', 'optout'];
     foreach ($other_mailing_functions as $function) {
-      if (empty($custom_mailing_base)) {
+      if ('' === $custom_mailing_base) {
         $new_url = "{$proxy_base}/mailing/{$function}.php";
       }
       else {

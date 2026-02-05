@@ -112,6 +112,7 @@ jobs:
         export CV_CONFIG="$HOME/.cv.json"
         cv vars:fill --quiet
         sed -i "s#\"TEST_DB_DSN\": \".*\"#\"TEST_DB_DSN\": \"$DATABASE_URL\"#g" "$CV_CONFIG"
+        cv ext:download "uk.co.vedaconsulting.mosaico@https://download.civicrm.org/extension/uk.co.vedaconsulting.mosaico/3.8.1752072010/uk.co.vedaconsulting.mosaico-3.8.1752072010.zip"
 
     - name: Run PHPUnit
       run: |

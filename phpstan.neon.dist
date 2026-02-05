@@ -1,3 +1,6 @@
+includes:
+- phpstan-baseline.neon
+
 parameters:
 	paths:
 		- CRM
@@ -12,6 +15,7 @@ parameters:
 		- civiproxy.civix.php
 		- tools/phpunit/vendor/bin/.phpunit/phpunit/src/Framework/TestCase.php
 	scanDirectories:
+		- ../uk.co.vedaconsulting.mosaico
 		- tools/phpunit/vendor/bin/.phpunit/phpunit/src/Framework
 		- mixin
 	bootstrapFiles:

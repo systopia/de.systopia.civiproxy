@@ -39,10 +39,11 @@ class CRM_Civiproxy_Mosaico {
     try {
       $mosaicoExt = civicrm_api3('Extension', 'getsingle', ['full_name' => 'uk.co.vedaconsulting.mosaico']);
       $this->isMosaicoInstalled = TRUE;
+      // @phpstan-ignore class.notFound
       $this->mosiacoExtenionUrl = CRM_Mosaico_ExtensionUtil::url();
     }
     catch (\Exception $ex) {
-      // Do nothing
+      // @ignoreException
     }
   }
 

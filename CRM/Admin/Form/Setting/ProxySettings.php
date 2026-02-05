@@ -10,12 +10,14 @@
 
 declare(strict_types = 1);
 
+use CRM_Civiproxy_ExtensionUtil as E;
+
 /**
  *
  * CiviProxy Settings Form
  *
  */
-class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting {
+class CRM_Admin_Form_Setting_ProxySettings extends CRM_Core_Form {
 
   public static function validateURL($value) {
     return preg_match(
@@ -27,25 +29,25 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting {
   }
 
   public function buildQuickForm() {
-    CRM_Utils_System::setTitle(ts('CiviProxy - Settings'));
+    CRM_Utils_System::setTitle(E::ts('CiviProxy - Settings'));
 
     // add all required elements
     $this->addElement('checkbox', 'proxy_enabled');
-    $this->addElement('text', 'proxy_url', ts('Proxy URL'), ['disabled' => 'disabled']);
-    $this->addElement('static', 'proxy_version', ts('Proxy version'));
+    $this->addElement('text', 'proxy_url', E::ts('Proxy URL'), ['disabled' => 'disabled']);
+    $this->addElement('static', 'proxy_version', E::ts('Proxy version'));
 
     $this->addElement(
       'text',
       'custom_mailing_base',
-      ts('Custom Subscribe/Unsubscribe Pages'),
+      E::ts('Custom Subscribe/Unsubscribe Pages'),
       ['disabled' => 'disabled']
     );
-    $this->addElement('text', 'proxy_api_key', ts('CiviProxy API Key'), ['disabled' => 'disabled']);
+    $this->addElement('text', 'proxy_api_key', E::ts('CiviProxy API Key'), ['disabled' => 'disabled']);
 
     $this->addButtons(
       [
-        ['type' => 'next', 'name' => ts('Save'), 'isDefault' => TRUE],
-        ['type' => 'cancel', 'name' => ts('Cancel')],
+        ['type' => 'next', 'name' => E::ts('Save'), 'isDefault' => TRUE],
+        ['type' => 'cancel', 'name' => E::ts('Cancel')],
       ]
     );
 
@@ -53,8 +55,8 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting {
   }
 
   public function addRules() {
-    $this->addRule('proxy_url', ts('This may only contain a valid URL'), 'onlyValidURL');
-    $this->addRule('custom_mailing_base', ts('This may only contain a valid URL'), 'onlyValidURL');
+    $this->addRule('proxy_url', E::ts('This may only contain a valid URL'), 'onlyValidURL');
+    $this->addRule('custom_mailing_base', E::ts('This may only contain a valid URL'), 'onlyValidURL');
   }
 
   public function preProcess() {
@@ -62,16 +64,16 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting {
     $proxyUrl = CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'proxy_url');
     $proxyVersion = '-';
 
-    if ($proxyUrl) {
+    if (NULL !== $proxyUrl && '' !== $proxyUrl) {
       // try to get the current proxy version
       $response = $this->requestProxyVersion($proxyUrl);
       if ($response['is_error']) {
         $proxyVersion = $response['message'];
-        CRM_Core_BAO_Setting::setItem(NULL, 'CiviProxy Settings', 'proxy_version');
+        Civi::settings()->revert('proxy_version');
       }
       else {
         $proxyVersion = $response['version'];
-        CRM_Core_BAO_Setting::setItem($proxyVersion, 'CiviProxy Settings', 'proxy_version');
+        Civi::settings()->set('proxy_version', $proxyVersion);
       }
     }
 
@@ -99,7 +101,7 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting {
   public function requestProxyVersion($url) {
     $response = @file_get_contents($url);
     if ($response === FALSE) {
-      return ['is_error' => 1, 'message' => sprintf(ts('Error: cannot access "%s"'), $url)];
+      return ['is_error' => 1, 'message' => E::ts('Error: cannot access "%1"', [1 => $url])];
     }
     else {
       $result = preg_match(
@@ -108,7 +110,7 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting {
         $output_array
       );
       if ($result === FALSE || $result === 0) {
-        return ['is_error' => 1, 'message' => sprintf(ts('Error: failed to parse version information: (%s)'), $url)];
+        return ['is_error' => 1, 'message' => E::ts('Error: failed to parse version information: (%1)', [1 => $url])];
       }
       else {
         return ['is_error' => 0, 'version' => $output_array[1]];
@@ -121,19 +123,19 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting {
     $values = $this->exportValues();
 
     // checkboxes
-    CRM_Core_BAO_Setting::setItem(!empty($values['proxy_enabled']), 'CiviProxy Settings', 'proxy_enabled');
+    Civi::settings()->set('proxy_enabled', (bool) ($values['proxy_enabled'] ?? NULL));
 
     // text
     if (isset($values['proxy_url'])) {
-      CRM_Core_BAO_Setting::setItem($values['proxy_url'], 'CiviProxy Settings', 'proxy_url');
+      Civi::settings()->set('proxy_url', $values['proxy_url']);
     }
     if (isset($values['custom_mailing_base'])) {
       // check if it is simply default ({proxy_url}/mailing)
-      if ($values['custom_mailing_base'] == $values['proxy_url'] . '/mailing') {
+      if ($values['custom_mailing_base'] === $values['proxy_url'] . '/mailing') {
         // ...in which case we'll simply set it to ''
         $values['custom_mailing_base'] = '';
       }
-      CRM_Core_BAO_Setting::setItem($values['custom_mailing_base'], 'CiviProxy Settings', 'custom_mailing_base');
+      Civi::settings()->set('custom_mailing_base', $values['custom_mailing_base']);
     }
     if (isset($values['proxy_api_key'])) {
       Civi::settings()->set('proxy_api_key', $values['proxy_api_key']);
@@ -141,7 +143,7 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Admin_Form_Setting {
 
     // give feedback to user
     $session = CRM_Core_Session::singleton();
-    $session->setStatus(ts('Settings successfully saved'), ts('Settings'), 'success');
+    CRM_Core_Session::setStatus(E::ts('Settings successfully saved'), E::ts('Settings'), 'success');
     $session->replaceUserContext(CRM_Utils_System::url('civicrm/admin/setting/civiproxy'));
   }
 
