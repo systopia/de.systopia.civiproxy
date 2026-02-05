@@ -75,7 +75,6 @@ class CRM_Civiproxy_ExtensionUtil {
     return self::CLASS_PREFIX . '_' . str_replace('\\', '_', $suffix);
   }
 
-
 }
 
 use CRM_Civiproxy_ExtensionUtil as E;
