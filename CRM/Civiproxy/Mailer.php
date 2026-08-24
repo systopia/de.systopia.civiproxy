@@ -67,7 +67,7 @@ class CRM_Civiproxy_Mailer {
     // get the URLs
     $config      = CRM_Core_Config::singleton();
     $system_base = $config->userFrameworkBaseURL;
-    $proxy_base  = CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'proxy_url');
+    $proxy_base  = Civi::settings()->get('proxy_url');
 
     // General external functions
     $value = preg_replace(

@@ -60,8 +60,8 @@ class CRM_Admin_Form_Setting_ProxySettings extends CRM_Core_Form {
   }
 
   public function preProcess() {
-    $this->assign('proxy_enabled', CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'proxy_enabled'));
-    $proxyUrl = CRM_Core_BAO_Setting::getItem('CiviProxy Settings', 'proxy_url');
+    $this->assign('proxy_enabled', Civi::settings()->get('proxy_enabled'));
+    $proxyUrl = Civi::settings()->get('proxy_url');
     $proxyVersion = '-';
 
     if (NULL !== $proxyUrl && '' !== $proxyUrl) {
