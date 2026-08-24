@@ -63,7 +63,8 @@
         ]
     },
     "conflict": {
-        "pear/mail_mime": "<1.10.2"
+        "pear/mail_mime": "<1.10.2",
+        "symfony/polyfill-php82": "<1.28"
     },
     "extra": {
         "branch-alias": {
