@@ -96,6 +96,11 @@ class CRM_Civiproxy_Mailer {
       $value
     );
     $value = preg_replace(
+      "#{$system_base}wp-content/uploads/civicrm/persist/contribute/images/uploads/static/#i",
+      $proxy_base . '/file.php?id=',
+      $value
+    );
+    $value = preg_replace(
       '#' . \Civi::paths()->getUrl('[civicrm.files]/', 'absolute') . '#i',
       $proxy_base . '/file.php?id=',
       $value
